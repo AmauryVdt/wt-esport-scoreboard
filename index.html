@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <title>War Thunder Esport Scoreboard</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+    <div class="team-container">
+      <input value="Team 1" type="text" id="name_team1" minlength="1" maxlength="15" size="10" />
+      <p class="score" id="score_team1">0</p>
+      <div class="button-list">
+        <button id="decrease_team1">-</button>
+        <button id="increase_team1">+</button>
+      </div>
+    </div>
+
+    <div class="middle">
+      <button id="switch">↔️ Switch</button>
+      <div class="bestof">
+        <div class="bestof-number">
+          <p>BEST OF &nbsp;</p> <p id="bestof">1</p>
+        </div>
+        <div class="button-list">
+          <button id="decrease_bestof">-</button>
+          <button id="increase_bestof">+</button>
+        </div>
+      </div>
+      <button id="submit">✅ Submit</button>
+      <button id="reset">🔄️ Reset</button>      
+    </div>
+
+    <div class="team-container">
+      <input value="Team 2" type="text" id="name_team2" minlength="1" maxlength="15" size="10" />
+      <p class="score" id="score_team2">0</p>
+      <div class="button-list">
+        <button id="decrease_team2">-</button>
+        <button id="increase_team2">+</button>
+      </div>
+    </div>
+
+    <!-- You can also require other files to run in this process -->
+    <script src="./renderer.js"></script>
+  </body>
+</html>
