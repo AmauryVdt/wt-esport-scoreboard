@@ -1,8 +1,8 @@
 obs = obslua
 
 -- Chemins des fichiers texte
-local path_victoires_equipe1 = "C:/Users/amaur/OneDrive/Bureau/wt-esport-scoreboard/score1.txt"
-local path_victoires_equipe2 = "C:/Users/amaur/OneDrive/Bureau/wt-esport-scoreboard/score2.txt"
+local path_victoires_equipe1 = "C:/wt-esport-scoreboard/score1.txt"
+local path_victoires_equipe2 = "C:/wt-esport-scoreboard/score2.txt"
 
 -- Fonction pour lire le nombre de victoires depuis un fichier
 local function lire_victoires(file_path)
@@ -23,7 +23,7 @@ local function mettre_a_jour_carres()
 
     -- Mettre à jour l'opacité des carrés de l'équipe 1
     for i = 1, 5 do
-        local source_name = "Equipe1_Match" .. i
+        local source_name = "Team1_Match" .. i
         local visible = (i <= victoires_equipe1)
         local source = obs.obs_get_source_by_name(source_name)
         if source then
@@ -34,7 +34,7 @@ local function mettre_a_jour_carres()
 
     -- Mettre à jour l'opacité des carrés de l'équipe 2
     for i = 1, 5 do
-        local source_name = "Equipe2_Match" .. i
+        local source_name = "Team2_Match" .. i
         local visible = (i <= victoires_equipe2)
         local source = obs.obs_get_source_by_name(source_name)
         if source then

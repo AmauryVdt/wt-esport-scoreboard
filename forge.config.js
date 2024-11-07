@@ -4,7 +4,8 @@ const { FuseV1Options, FuseVersion } = require('@electron/fuses');
 module.exports = {
   packagerConfig: {
     asar: true,
-    icon: 'assets/wt_esport_logo',
+    icon: './assets/wt_esport_logo',
+    extraResource: ["./script.lua"],
   },
   rebuildConfig: {},
   publishers: [
@@ -23,7 +24,10 @@ module.exports = {
   makers: [
     {
       name: '@electron-forge/maker-squirrel',
-      config: {},
+      config: {
+        iconUrl: 'https://raw.githubusercontent.com/AmauryVdt/wt-esport-scoreboard/main/assets/wt_esport_logo.ico',
+        setupIcon: './assets/wt_esport_logo.ico',
+      },
     },
     {
       name: '@electron-forge/maker-zip',

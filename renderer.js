@@ -1,8 +1,7 @@
 // renderer.js
 
 // functions
-function submitResults(event) {
-  event.preventDefault()
+function submitResults() {
 
   const team1 = document.getElementById('name_team1').value;
   const team2 = document.getElementById('name_team2').value;
@@ -19,10 +18,24 @@ function updateNumber(elementId, increase) {
   let scoreElement = document.getElementById(elementId);
   let score = parseInt(scoreElement.innerText, 10);
   if (increase)
-    scoreElement.innerText = score + 1;
+    scoreElement.innerText = score + 1; 
   else
     if (score > 0 && elementId !== "bestof" || score > 1) scoreElement.innerText = score - 1;
+  submitResults();
+}
 
+function switchTeams() {
+  let team1 = document.getElementById("name_team1").value;
+  let team2 = document.getElementById("name_team2").value;
+  let score1 = document.getElementById("score_team1").innerText;
+  let score2 = document.getElementById("score_team2").innerText;
+
+  document.getElementById("name_team1").value = team2;
+  document.getElementById("name_team2").value = team1;
+  document.getElementById("score_team1").innerText = score2;
+  document.getElementById("score_team2").innerText = score1;
+
+  submitResults();
 }
 
 // Team 1
@@ -49,14 +62,21 @@ document.getElementById("reset").addEventListener("click", () => {
 
 document.getElementById("submit").addEventListener("click", submitResults);
 
-document.getElementById("switch").addEventListener("click", () => {  
-  let team1 = document.getElementById("name_team1").value;
-  let team2 = document.getElementById("name_team2").value;
-  let score1 = document.getElementById("score_team1").innerText;
-  let score2 = document.getElementById("score_team2").innerText;
+document.getElementById("switch").addEventListener("click", () => switchTeams());
 
-  document.getElementById("name_team1").value = team2;
-  document.getElementById("name_team2").value = team1;
-  document.getElementById("score_team1").innerText = score2;
-  document.getElementById("score_team2").innerText = score1;
+// Shortcuts
+window.electronAPI.onSwitchActivateFunction(() => {
+  switchTeams();
+});
+window.electronAPI.onIncreaseTeam1ActivateFunction(() => {
+  updateNumber("score_team1", true);
+});
+window.electronAPI.onDecreaseTeam1ActivateFunction(() => {
+  updateNumber("score_team1", false);
+});
+window.electronAPI.onIncreaseTeam2ActivateFunction(() => {
+  updateNumber("score_team2", true);
+});
+window.electronAPI.onDecreaseTeam2ActivateFunction(() => {
+  updateNumber("score_team2", false);
 });
