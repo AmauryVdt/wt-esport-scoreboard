@@ -55,9 +55,9 @@ app.on('will-quit', () => {
 });
 
 // Reset toutes les données après avoir "Submit" les résultats
-// try {
-//   require('electron-reloader')(module)
-// } catch (_) {}
+try {
+  require('electron-reloader')(module)
+} catch (_) {}
 
 ipcMain.on('save-results', (event, data) => {
   const dirPath = 'C:/wt-esport-scoreboard';

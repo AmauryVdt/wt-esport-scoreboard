@@ -1,6 +1,7 @@
-# How to use this
-*This tool is for Windows only.*\
-Please note the "Best Of" part is not useful at the moment.
+# War Thunder Esport Scoreboard
+This tool have been made to set up score during War Thunder streams.\
+Please note the "Best Of" part is not useful at the moment.\
+*This tool is for Windows only.*
 ## Start the application
 If the application is compressed (.zip), Unzip the application.
 Double click on the folder (`wt-esport-scoreboard-win32-x64/`) and double click on `wt-esport-scoreboard.exe`.

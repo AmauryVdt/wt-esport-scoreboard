@@ -38,6 +38,14 @@ function switchTeams() {
   submitResults();
 }
 
+function resetBoard() {
+  document.getElementById("name_team1").value = "Team 1";
+  document.getElementById("name_team2").value = "Team 2";
+  document.getElementById("score_team1").innerText = 0;
+  document.getElementById("score_team2").innerText = 0;
+  document.getElementById("bestof").innerText = 1;
+}
+
 // Team 1
 document.getElementById("increase_team1").addEventListener("click", () => updateNumber("score_team1", true));
 document.getElementById("decrease_team1").addEventListener("click", () => updateNumber("score_team1", false));
@@ -49,15 +57,18 @@ document.getElementById("increase_bestof").addEventListener("click", () => updat
 document.getElementById("decrease_bestof").addEventListener("click", () => updateNumber("bestof", false));
 
 // Settings Buttons
+document.getElementById("reset-yes").addEventListener("click", () => {
+  resetBoard();
+  document.getElementById("reset-buttons").style.display = "none";
+  document.getElementById("reset").style.display = "block";
+});
+document.getElementById("reset-no").addEventListener("click", () => {
+  document.getElementById("reset-buttons").style.display = "none";
+  document.getElementById("reset").style.display = "block";
+});
 document.getElementById("reset").addEventListener("click", () => {
-  const confirmation = confirm("All data will be reset to default.");
-  if (confirmation) {
-    document.getElementById("name_team1").value = "Team 1";
-    document.getElementById("name_team2").value = "Team 2";
-    document.getElementById("score_team1").innerText = 0;
-    document.getElementById("score_team2").innerText = 0;
-    document.getElementById("bestof").innerText = 1;
-  }
+  document.getElementById("reset-buttons").style.display = "block";
+  document.getElementById("reset").style.display = "none";
 });
 
 document.getElementById("submit").addEventListener("click", submitResults);
@@ -79,4 +90,14 @@ window.electronAPI.onIncreaseTeam2ActivateFunction(() => {
 });
 window.electronAPI.onDecreaseTeam2ActivateFunction(() => {
   updateNumber("score_team2", false);
+});
+
+// Audio for Button
+const audio = new Audio("./assets/minecraft-buttonplate-click.mp3");
+const buttons = document.querySelectorAll("button");
+
+buttons.forEach(button => {
+  button.addEventListener("click", () => {
+    audio.play();
+  });
 });
