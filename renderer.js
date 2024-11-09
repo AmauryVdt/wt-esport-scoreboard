@@ -96,8 +96,10 @@ window.electronAPI.onDecreaseTeam2ActivateFunction(() => {
 const audio = new Audio("./assets/minecraft-buttonplate-click.mp3");
 const buttons = document.querySelectorAll("button");
 
+// TODO: Add volume control before using this
 buttons.forEach(button => {
   button.addEventListener("click", () => {
-    audio.play();
+    // audio.play();
+
   });
 });

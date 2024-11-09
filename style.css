@@ -25,6 +25,10 @@ button {
         /* background-color: #4f4747;
         color: white; */
     }
+
+    &:active {
+        transform: scale(0.9);
+    }
 }
 
 .middle {

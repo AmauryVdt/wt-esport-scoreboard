@@ -1,6 +1,6 @@
 {
   "name": "wt-esport-scoreboard",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "main.js",
   "scripts": {
     "start": "electron-forge start",
